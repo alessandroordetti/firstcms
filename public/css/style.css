@@ -1,0 +1,23 @@
+.bg-login{
+    background-color: #ecf0f5;
+}
+
+.bg-button{
+    background-color: #337ab7;
+}
+
+.bottom-line{
+    border-bottom: 1px solid lightgray;
+}
+
+.note-style, .note-icon-user{
+    display: none;
+}
+
+label{
+    white-space: nowrap;
+}
+
+#bg-light-blue{
+    background-color: #ECF0F5;
+}
