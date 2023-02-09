@@ -1,9 +1,14 @@
-
 document.getElementById("genera-url").addEventListener("click", function(event){ 
-    const newValue = document.getElementById("title").value;
+    const originalValue = document.getElementById("title").value;
     event.preventDefault();
-    console.log(newValue);
+    console.log(originalValue);
 
-    const slugText = document.getElementById("slug");
-    slugText.value = newValue.trim().toLowerCase().replace(/\s+/g, '-');
-});
+    if(/[^A-Za-z0-9_ ]+/g.test(originalValue)){
+        alert('Non sono ammessi caratteri speciali. Per favore, riprova');
+    } else {
+        const newValue = originalValue.trim().toLowerCase();
+        const slugText = document.getElementById("slug");
+        slugText.value = newValue.replace(/\s+/g, '-');
+    }
+});  
+

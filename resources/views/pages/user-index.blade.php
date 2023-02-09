@@ -16,6 +16,7 @@
       </div>
 
       <div class="col-12">
+      <a href="{{ route('register')}}"><button class="btn border mb-4"><i class="fa-solid fa-plus bg-dark text-white rounded-circle p-1"></i> Crea Utente</button></a>
         <table class="table">
           <thead>
             <tr>

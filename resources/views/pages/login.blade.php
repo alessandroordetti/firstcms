@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/86168026ac.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">   
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
-    <title>Document</title>
+    <title>Cms Login</title>
 </head>
 <body class="bg-login">
     <div class="container py-5">
@@ -21,6 +21,10 @@
                         <span>Dashboard</span>
                         <br>
                         <span>Accesso al Pannello di Controllo</span>
+
+                        @if(session('logoutMessage'))
+                            <h4 class="text-success">{{session('logoutMessage')}}</h4>
+                        @endif
                     </div>  
 
                     <div class="py-3">

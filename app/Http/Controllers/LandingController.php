@@ -8,6 +8,6 @@ class LandingController extends Controller
 {
     public function dashboard()
     {
-        return redirect()->route('landing');
+        return view('pages.landing');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\CmsMultiversityPage;
+use Illuminate\Support\Facades\DB;
 
 
 class CmsMultiversityPageController extends Controller
@@ -17,6 +18,7 @@ class CmsMultiversityPageController extends Controller
 
     public function create()
     {
+
         return view('pages.pagina-create');
     }
 
@@ -25,39 +27,41 @@ class CmsMultiversityPageController extends Controller
         $validation = Validator::make($request->all(), [
             'ateneo' => 'required',
             'titolo' => 'required|min:8',
-            'categoria' => 'required',  
             'slug' => 'required',
+            'template' => 'required',
             'seo_title' => 'required|min:8',
             'seo_description' => 'required|min:8',
             'contenuto' => 'required',
             'stato' => 'required' 
         ]);
 
+        /* dd($validation); */
+
         if($validation->fails()){
-            return redirect()->route('pagina-index')->with('errorMessage', 'Controlla i dati per favore');
-        }
+            return redirect()->route('pagina-create')->with('errorMessage', 'Controlla i dati per favore');
+        } 
 
         $data = $request->all();
+
         $newPage = new CmsMultiversityPage;
         $newPage->ateneo = $data['ateneo'];
         $newPage->titolo = $data['titolo'];
-        $newPage->template = 'prova';
-        $newPage->categoria = 1;
+        $newPage->template = $data['template'];
+        $newPage->slug = $data['slug'];
         $newPage->seo_title = $data['seo_title'];
         $newPage->seo_description = $data['seo_description'];
         $newPage->contenuto = $data['contenuto'];
         $newPage->stato = $data['stato'];
-        $newPage->save();
+        $newPage->deleted_at = 0;
 
-        $allPages = CmsMultiversityPage::all();
+        /* CHECK PER VEDERE SE NEL DB E' GIÀ PRESENTE UN */
+        if(CmsMultiversityPage::where('slug', '=', $data['slug'])->where('ateneo', '=', $data['ateneo'])->exists()){
+            return redirect()->route('pagina-create')->with('queryTitleError', 'La pagina è già presente nel DB. Riprovare con un nuovo nome');
+        }
+
+        $newPage->save();
         
         return redirect()->route('pagina-edit', ['id' => $newPage->id])->with(['success' => 'Pagina registrata correttamente', 'newPage' => $newPage]);
-    }
-
-    public function show($id)
-    {
-        $page = CmsMultiversityPage::findOrFail($id);
-        return redirect()->route('page-show', ['id' => $page->id]);
     }
 
     public function edit($id, CmsMultiversityPage $page)
@@ -74,23 +78,33 @@ class CmsMultiversityPageController extends Controller
         $validation = Validator::make($request->all(), [
             'ateneo' => 'required',
             'titolo' => 'required|min:8',
-            'categoria' => 'required',  
             'slug' => 'required',
+            'template' => 'required',
             'seo_title' => 'required|min:8',
             'seo_description' => 'required|min:8',
             'contenuto' => 'required',
             'stato' => 'required' 
         ]);
 
-        $page->ateneo = $data['ateneo'];
-        $page->titolo = $data['titolo'];
-        $page->categoria = $data['categoria'];
-        /* $page->slug = $data['slug']; */
-        $page->seo_title = $data['seo_title'];
-        $page->seo_description = $data['seo_description'];
-        $page->stato = $data['stato'];
-        $page->contenuto = $data['contenuto'];
-        $page->save();
+        if($validation->fails()){
+            return redirect()->route('pagina-update', ['id' => $page->id])->with('response', 'Per favore, controlla i dati inseriti');
+        }
+
+        $newPage->ateneo = $data['ateneo'];
+        $newPage->titolo = $data['titolo'];
+        $newPage->template = $data['template'];
+        $newPage->slug = $data['slug'];
+        $newPage->seo_title = $data['seo_title'];
+        $newPage->seo_description = $data['seo_description'];
+        $newPage->contenuto = $data['contenuto'];
+        $newPage->stato = $data['stato'];
+        $newPage->deleted_at = 0;
+
+        if(CmsMultiversityPage::where('slug', '=', $data['slug'])->where('ateneo', '=', $data['ateneo'])->exists()){
+            return redirect()->route('pagina-create')->with('queryTitleError', 'La pagina è già presente nel DB. Riprovare con un nuovo nome');
+        }
+
+        $newPage->save();
 
         return redirect()->route('pagina-edit', ['id' => $page->id])->with('response', 'Pagina modificata correttamente');
     }
@@ -101,6 +115,6 @@ class CmsMultiversityPageController extends Controller
         $deletedPage->deleted_at = 1;
         $deletedPage->save();
 
-        return redirect()->route('pagina-index')->with('deleteMessage', 'Pagina rimosso correttamente');
+        return redirect()->route('pagina-index')->with('deleteMessage', 'Pagina rimossa correttamente');
     }
 }

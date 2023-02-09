@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,7 @@ use App\Http\Controllers\LoginController;
 /* PER IL LOGIN DELL'UTENTE */
 Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', 'LoginController@checkPassword');
+Route::get('/logout', 'LogoutController@logout')->name('logout');
 
 /* PER LA CREAZIONE DEL COOKIE DOPO IL LOGIN DELL'UTENTE CON SCADENZA +3 GIORNI */
 Route::get('/cookie/set','CookieController@setCookie');
@@ -44,7 +47,7 @@ Route::middleware(['jwt.cookie'])->group(function () {
     Route::get('/pagina', 'CmsMultiversityPageController@index')->name('pagina-index');
     Route::get('/pagina/create', 'CmsMultiversityPageController@create')->name('pagina-create');
     Route::post('/pagina/store', 'CmsMultiversityPageController@store')->name('pagina-store');
-    Route::get('/pagina/{id}', 'CmsMultiversityPageController@show')->name('pagina-show');
+    /* Route::get('/pagina/{id}', 'CmsMultiversityPageController@show')->name(''); */
     Route::get('/pagina/edit/{id}', 'CmsMultiversityPageController@edit')->name('pagina-edit');
     Route::post('/pagina/{id}', 'CmsMultiversityPageController@update')->name('pagina-update');
     Route::post('pagina/{id}/delete', 'CmsMultiversityPageController@delete')->name('pagina-delete');

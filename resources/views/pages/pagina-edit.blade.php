@@ -3,8 +3,10 @@
 @section('content')
 
 <section class="p-5">
-    <div class="col-12">
+    <div class="col-12 d-flex justify-content-between align-items-center">
         <h1 class="p-2">Pagine</h1>
+
+        <a href="{{route('pagina-index')}}" class="btn btn-primary h-50">Torna indietro</a>
     </div>
 
   <div class="container-fluid bg-white rounded border border-3 border-top py-4">
@@ -14,9 +16,9 @@
             <form action="{{route('pagina-update', $page->id)}}" method="POST" id="form">
                 
                 @if(session('response'))
-                    <h2>{{session('response')}}</h2>
+                    <h2 class="text-success">{{session('response')}}</h2>
                 @elseif(session('success'))
-                    <h2>{{session('success')}}</h2>
+                    <h2 class="text-success">{{session('success')}}</h2>
                 @endif
                 
                 @csrf 
@@ -50,7 +52,7 @@
                     <label for="slug" class="mb-4 fw-bold me-2 w-25 text-center">Slug</label>
 
                     <div class="w-100 d-flex justify-content-between align-items-center rounded">
-                        <input type="text" name="slug" class="form-control h-100" id="slug" required disabled>
+                        <input type="text" name="slug" class="form-control h-100" id="slug" required readonly>
                         <span class="form-control h-100 w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
                     </div>
                 </div>
