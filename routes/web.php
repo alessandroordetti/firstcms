@@ -47,10 +47,16 @@ Route::middleware(['jwt.cookie'])->group(function () {
     Route::get('/pagina', 'CmsMultiversityPageController@index')->name('pagina-index');
     Route::get('/pagina/create', 'CmsMultiversityPageController@create')->name('pagina-create');
     Route::post('/pagina/store', 'CmsMultiversityPageController@store')->name('pagina-store');
-    /* Route::get('/pagina/{id}', 'CmsMultiversityPageController@show')->name(''); */
-    Route::get('/pagina/edit/{id}', 'CmsMultiversityPageController@edit')->name('pagina-edit');
-    Route::post('/pagina/{id}', 'CmsMultiversityPageController@update')->name('pagina-update');
+    Route::get('/pagina/{id}/edit', 'CmsMultiversityPageController@edit')->name('pagina-edit');
+    Route::post('pagina/{id}', 'CmsMultiversityPageController@update')->name('pagina-update');
     Route::post('pagina/{id}/delete', 'CmsMultiversityPageController@delete')->name('pagina-delete');
 
+    /* CRUF PER LA GESTIONE DELLE PAGINE */
+    Route::get('/cdl', 'CmsMultiversityCdlController@index')->name('cdl-index');
+    Route::get('/cdl/create', 'CmsMultiversityCdlController@create')->name('cdl-create');
+    Route::post('/cdl/store', 'CmsMultiversityCdlController@store')->name('cdl-store');
+    Route::get('/cdl/{id}/edit', 'CmsMultiversityCdlController@edit')->name('cdl-edit');
+    Route::post('/cdl/{id}', 'CmsMultiversityCdlController@update')->name('cdl-update');
+    Route::post('/cdl/{id}/delete', 'CmsMultiversityCdlController@delete')->name('cdl-delete');
 });
 

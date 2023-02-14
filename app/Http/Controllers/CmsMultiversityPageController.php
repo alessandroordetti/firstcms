@@ -35,8 +35,6 @@ class CmsMultiversityPageController extends Controller
             'stato' => 'required' 
         ]);
 
-        /* dd($validation); */
-
         if($validation->fails()){
             return redirect()->route('pagina-create')->with('errorMessage', 'Controlla i dati per favore');
         } 
@@ -54,7 +52,7 @@ class CmsMultiversityPageController extends Controller
         $newPage->stato = $data['stato'];
         $newPage->deleted_at = 0;
 
-        /* CHECK PER VEDERE SE NEL DB E' GIÀ PRESENTE UN */
+        /* CHECK PER VEDERE SE NEL DB E' GIÀ PRESENTE UN RECORD CON LO STESSO SLUG ED ATENEO CONTEMPORANEAMENTE */
         if(CmsMultiversityPage::where('slug', '=', $data['slug'])->where('ateneo', '=', $data['ateneo'])->exists()){
             return redirect()->route('pagina-create')->with('queryTitleError', 'La pagina è già presente nel DB. Riprovare con un nuovo nome');
         }

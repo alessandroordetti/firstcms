@@ -10,7 +10,7 @@
             <li><a href="http://"><i class="fa-regular fa-envelope me-1 px-3"></i>Moduli</a></li>
             <li><a href="http://cmsmultiversity/blogs"><i class="fa fa-newspaper-o fa-fw me-4 px-3"></i>Blog</a></li>
             <li><a href="http://"><i class="fa fa-calendar fa-fw me-4 px-3"></i>Eventi</a></li>
-            <li><a href="http://"><i class="fa fa-university fa-fw me-4 px-3"></i>Università</a></li>
+            <li><a href="http://cmsmultiversity/cdl"><i class="fa fa-university fa-fw me-4 px-3"></i>Università</a></li>
         </ul>
     </div>
 </section>

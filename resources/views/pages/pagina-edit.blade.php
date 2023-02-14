@@ -13,14 +13,13 @@
     <div class="row">
 
         <div class="col-10 mx-auto">
-            <form action="{{route('pagina-update', $page->id)}}" method="POST" id="form">
-                
-                @if(session('response'))
-                    <h2 class="text-success">{{session('response')}}</h2>
-                @elseif(session('success'))
-                    <h2 class="text-success">{{session('success')}}</h2>
-                @endif
-                
+            @if(session('response'))
+                <h2 class="text-success">{{session('response')}}</h2>
+            @elseif(session('success'))
+                <h2 class="text-success">{{session('success')}}</h2>
+            @endif
+            <form action="{{route('pagina-update', $page->id)}}" method="POST">
+
                 @csrf 
 
                 <div class="mb-3 d-flex align-items-center">
@@ -83,6 +82,7 @@
                         <span class="mx-2" value="0">On</span>
                     </div>
                 </div>
+                
                 <button type="submit" class="btn btn-primary mb-3">Modifica</button>
             </form>
         </div>

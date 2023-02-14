@@ -29,17 +29,17 @@
                 </div>
                 <div>
                     <label for="exampleInputPassword1" class="form-label">Gruppo Id*</label>
-                    <select class="form-select mb-3" aria-label="Default select example" name="gruppo_id">
-                    <option selected>Ruolo*</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Editor</option>
+                    <select class="form-select mb-3" aria-label="Default select example" name="gruppo_id" required>
+                        <option selected disabled>Ruolo*</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Editor</option>
                     </select>
                 </div>
 
                 <div>
                     <label for="exampleInputPassword1" class="form-label">Player Id*</label>
-                    <select class="form-select mb-3" aria-label="Default select example" name="player_id">
-                        <option selected>Player*</option>
+                    <select class="form-select mb-3" aria-label="Default select example" name="player_id" required>
+                        <option selected disabled>Player*</option>
                         <option value="1">All</option>
                         <option value="2">Pegaso</option>
                         <option value="3">Mercatorum</option>

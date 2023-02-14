@@ -37,7 +37,6 @@
                     <div class="w-100 d-flex justify-content-between align-items-center rounded">
                         <input type="text" name="titolo" class="form-control" id="title" required>
                         <span class="form-control h-100 w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
-                        <!-- <div class="border rounded text-center px-2 w-25 h-100"><a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-arrow-rotate-right mx-1"></i>Genera Url</a></div> -->
                     </div>
                 </div>
 

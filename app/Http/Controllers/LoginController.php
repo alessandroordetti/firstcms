@@ -40,16 +40,6 @@ class LoginController extends Controller
 
 
         if ($user && Hash::check($request->password, $user->password)){
-/*             $users = CmsMultiversityUser::all();
-            $token = 'token_JWT_CMS_Multiversity';
-            $minutes = 4320; // 3 giorni per la scadenza del token
-
-            $cookie = cookie()->make('CookieCMS', $token, $minutes);
-            return redirect()
-                ->route('user-index')->with([
-                    'users' => $users
-                ])
-                ->withCookie($cookie); */
 
             
             /* GENERAZIONE DEL TOKEN CON https://github.com/firebase/php-jwt */

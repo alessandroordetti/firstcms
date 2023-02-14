@@ -21,3 +21,7 @@ label{
 #bg-light-blue{
     background-color: #ECF0F5;
 }
+
+.right-to-left{
+    direction: rtl;
+}
