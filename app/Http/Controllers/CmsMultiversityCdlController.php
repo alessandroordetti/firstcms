@@ -22,11 +22,12 @@ class CmsMultiversityCdlController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->all();
        
         $validation = Validator::make($request->all(), [
             'ateneo' => 'required',
-            'titolo' => 'required|min:5',
-            'slug' => 'required',
+            'titolo' => 'string|required|min:5',
+            'slug' => 'string|required',
             'codice' => 'required',
             'classe' => 'required',
             'tipologia' => 'required',
@@ -36,18 +37,19 @@ class CmsMultiversityCdlController extends Controller
             'obiettivi' => 'required',
             'sbocchi' => 'required',
             'conoscenze' => 'required',
-            'tirocinio' => 'required',
-            'stage' => 'required',
+            'tirocinio' => 'int|in:0,1|required',
+            'stage' => 'int|in:0,1|required',
             'seo_title' => 'required|min:8',
             'seo_description' => 'required|min:8',
-            'stato' => 'required' 
+            'stato' => 'int|in:0,1|required' 
         ]);
+
 
         if($validation->fails()){
             return redirect()->route('cdl-create')->with('errorMessage', 'Controlla i dati per favore');
         } 
 
-        $data = $request->all();
+
         $newCdl = new CmsMultiversityCdl;
         $newCdl->ateneo = $data['ateneo'];
         $newCdl->titolo = $data['titolo'];
@@ -68,6 +70,10 @@ class CmsMultiversityCdlController extends Controller
         $newCdl->stato = $data['stato'];
         $newCdl->deleted_at = 0;
 
+        if(CmsMultiversityCdl::where('ateneo', '=', $data['ateneo'])->where('slug', '=', $data['slug'])->exists()){
+            return redirect()->route('cdl-create')->with('queryError', 'Il corso è già presente nel DB. Riprovare');
+        } 
+
         $newCdl->save();
 
         return redirect()->route('cdl-edit', ['id' => $newCdl->id])->with('success', 'Corso registrato correttamente');
@@ -83,9 +89,6 @@ class CmsMultiversityCdlController extends Controller
     {
         $cdl = CmsMultiversityCdl::find($id);
         $data = $request->all();
-
-       
-
     
         $validation = Validator::make($request->all(), [
             'ateneo' => 'required',
@@ -100,19 +103,17 @@ class CmsMultiversityCdlController extends Controller
             'obiettivi' => 'required',
             'sbocchi' => 'required',
             'conoscenze' => 'required',
-            'tirocinio' => 'nullable',
-            'stage' => 'nullable',
+            'tirocinio' => 'int|in:0,1|required',
+            'stage' => 'int|in:0,1|required',
             'seo_title' => 'required|min:8',
             'seo_description' => 'required|min:8',
-            'stato' => 'nullable'
+            'stato' => 'int|in:0,1|required'
         ]);
 
 
         if($validation->fails()){
             return redirect()->route('cdl-edit', ['id' => $cdl->id])->with('errorMessage', 'Controlla i dati per favore');
         }
-
-       
 
         $cdl->ateneo = $data['ateneo'];
         $cdl->titolo = $data['titolo'];
@@ -126,22 +127,16 @@ class CmsMultiversityCdlController extends Controller
         $cdl->obiettivi = $data['obiettivi'];
         $cdl->sbocchi = $data['sbocchi'];
         $cdl->conoscenze = $data['conoscenze'];
-        if(!isset($data['tirocinio'])){
-            $cdl->tirocinio = 1;
-        }
-        if(!isset($data['stage'])){
-            $cdl->stage = 1;
-        }
+        $cdl->tirocinio = $data['tirocinio'];
+        $cdl->stage = $data['stage'];
         $cdl->seo_title = $data['seo_title'];
         $cdl->seo_description = $data['seo_description'];
-        if(!isset($data['stato'])){
-            $cdl->stato = 1;
-        }
+        $cdl->stato = $data['stato'];
 
         /* CONTROLLARE PERCHE' NON FUNZIONA */
-        /* if(CmsMultiversityCdl::where('titolo', '=', $data['titolo'])->where('codice', '=', $data['codice'])){
+        if(CmsMultiversityCdl::where('ateneo', '=', $data['ateneo'])->where('slug', '=', $data['slug'])->exists()){
             return redirect()->route('cdl-edit', ['id' => $cdl->id])->with('queryError', 'Il corso è già presente nel DB. Riprovare');
-        } */ 
+        } 
 
         $cdl->save();
 

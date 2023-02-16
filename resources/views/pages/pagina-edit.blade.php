@@ -106,5 +106,5 @@
 </style>
 
 <!-- SLUG GENERATOR SCRIPTO -->
-<script src="{{ asset('js/page-slug.js') }}"></script>
+<script src="{{ asset('js/slug-generator.js') }}"></script>
 @endsection

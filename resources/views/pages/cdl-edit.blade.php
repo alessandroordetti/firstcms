@@ -15,11 +15,11 @@
                 @if(session('errorMessage'))
                     <h3>{{session('errorMessage')}}</h3>
                 @elseif(session('queryError'))
-                    <h3>{{session('queryError')}}</h3>
+                    <h3 class="text-danger text-center mb-3">{{session('queryError')}}</h3>
                 @elseif(session('success'))
-                    <h3 class="text-success text-center">{{session('success')}}</h3>
+                    <h3 class="text-success text-center mb-3">{{session('success')}}</h3>
                 @elseif(session('successMessage'))
-                    <h3 class="text-success text-center">{{session('successMessage')}}</h3>
+                    <h3 class="text-success text-center mb-3">{{session('successMessage')}}</h3>
                 @endif
 
                 <form action="{{route('cdl-update', $cdl->id)}}" method="POST">
@@ -30,7 +30,7 @@
                         <select class="form-select mb-3" aria-label="Default select example" name="ateneo">
                             <option selected disabled>- Seleziona un Ateneo -</option>
                             <option value="unipegaso" {{ ($cdl->ateneo == 'unipegaso') ? 'selected' : '' }}>Unipegaso</option>
-                            <option value="mercatorum" {{ ($cdl->ateneo == 'marcatorum') ? 'selected' : '' }}>Mercatorum</option>
+                            <option value="mercatorum" {{ ($cdl->ateneo == 'mercatorum') ? 'selected' : '' }}>Mercatorum</option>
                         </select>
                     </div>
                     
@@ -105,24 +105,26 @@
                 <div class="mb-3 d-flex ">
                     <label for="tirocinio" class="mb-4 fw-bold me-2 w-25 text-center">Tirocinio</label>
                     <div class="text-start">
-                        <span class="mx-2" value="1">No</span>
+                        <span class="mx-2">No</span>
                         <label class="switch">
-                            <input type="checkbox" name="tirocinio" value="1">
+                            <input type="hidden" name="tirocinio" value="0">
+                            <input type="checkbox" name="tirocinio" value="1" {{ ($cdl->tirocinio == 1) ? 'checked' : ''}}>
                             <span class="slider round"></span>
                         </label>
-                        <span class="mx-2" value="0">Si</span>
+                        <span class="mx-2">Si</span>
                     </div>
                 </div>
 
                 <div class="mb-3 d-flex ">
                     <label for="stage" class="mb-4 fw-bold me-2 w-25 text-center">Stage</label>
                     <div class="text-start">
-                        <span class="mx-2" value="1">No</span>
+                        <span class="mx-2">No</span>
                         <label class="switch">
-                            <input type="checkbox" name="stage" value="1">
+                            <input type="hidden" name="stage" value="0">
+                            <input type="checkbox" name="stage" value="1" {{ ($cdl->stage == 1) ? 'checked' : ''}}>
                             <span class="slider round"></span>
                         </label>
-                        <span class="mx-2" value="0">Si</span>
+                        <span class="mx-2">Si</span>
                     </div>
                 </div>
 
@@ -140,12 +142,13 @@
                 <div class="mb-3 d-flex ">
                     <label for="stato" class="mb-4 fw-bold me-2 w-25 text-center">Stato</label>
                     <div class="text-start">
-                        <span class="mx-2" value="1">Off</span>
+                        <span class="mx-2">Off</span>
                         <label class="switch">
-                            <input type="checkbox" name="stato" value="0">
+                            <input type="hidden" name="stato" value="0">
+                            <input type="checkbox" name="stato" value="1" {{ ($cdl->stato == 1) ? 'checked' : ''}}>
                             <span class="slider round"></span>
                         </label>
-                        <span class="mx-2" value="0">On</span>
+                        <span class="mx-2">On</span>
                     </div>
                 </div>
                     
@@ -165,5 +168,5 @@
 </script>
 
 <!-- SLUG GENERATOR SCRIPTO -->
-<script src="{{ asset('js/cdl-slug.js') }}"></script>
+<script src="{{ asset('js/slug-generator.js') }}"></script>
 @endsection

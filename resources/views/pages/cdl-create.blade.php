@@ -14,6 +14,8 @@
 
                 @if(session('errorMessage'))
                     <h2>{{session('errorMessage')}}</h2>
+                @elseif(session('queryError'))
+                    <h2 class="text-danger text-center mb-3">{{session('queryError')}}</h2>
                 @endif
 
                 <div class="mb-3 d-flex align-items-center">
@@ -54,9 +56,9 @@
                     <label for="tipologia" class="mb-4 fw-bold me-2 w-25 h-100 text-center">Tipologia</label>
                     <select class="form-select mb-3" aria-label="Default select example" name="tipologia">
                         <option selected disabled>- Seleziona una tipologia -</option>
-                        <option value="1">Triennale</option>
-                        <option value="2">Magistrale-Biennale</option>
-                        <option value="3">Magistrale-Ciclo-Unico</option>
+                        <option value="triennale">Triennale</option>
+                        <option value="magistrale-biennale">Magistrale-Biennale</option>
+                        <option value="magistrale-ciclo-unico">Magistrale-Ciclo-Unico</option>
                     </select>
                 </div>
 
@@ -102,24 +104,26 @@
                 <div class="mb-3 d-flex ">
                     <label for="tirocinio" class="mb-4 fw-bold me-2 w-25 text-center">Tirocinio</label>
                     <div class="text-start">
-                        <span class="mx-2" value="1">No</span>
+                        <span class="mx-2">No</span>
                         <label class="switch">
-                            <input type="checkbox" name="tirocinio" value="0" checked>
+                            <input type="hidden" name="tirocinio" value="0">
+                            <input type="checkbox" name="tirocinio" value="1">
                             <span class="slider round"></span>
                         </label>
-                        <span class="mx-2" value="0">Si</span>
+                        <span class="mx-2">Si</span>
                     </div>
                 </div>
 
                 <div class="mb-3 d-flex ">
                     <label for="stage" class="mb-4 fw-bold me-2 w-25 text-center">Stage</label>
                     <div class="text-start">
-                        <span class="mx-2" value="1">No</span>
+                        <span class="mx-2">No</span>
                         <label class="switch">
-                            <input type="checkbox" name="stage" value="0" checked>
+                            <input type="hidden" name="stage" value="0">
+                            <input type="checkbox" name="stage" value="1">
                             <span class="slider round"></span>
                         </label>
-                        <span class="mx-2" value="0">Si</span>
+                        <span class="mx-2">Si</span>
                     </div>
                 </div>
 
@@ -137,12 +141,13 @@
                 <div class="mb-3 d-flex ">
                     <label for="stato" class="mb-4 fw-bold me-2 w-25 text-center">Stato</label>
                     <div class="text-start">
-                        <span class="mx-2" value="1">Off</span>
+                        <span class="mx-2">Off</span>
                         <label class="switch">
-                            <input type="checkbox" name="stato" value="0" checked>
+                            <input type="hidden" name="stato" value="0">
+                            <input type="checkbox" name="stato" value="1">
                             <span class="slider round"></span>
                         </label>
-                        <span class="mx-2" value="0">On</span>
+                        <span class="mx-2">On</span>
                     </div>
                 </div>
                 
@@ -162,5 +167,5 @@
 </script> 
 
 <!-- SLUG GENERATOR SCRIPTO -->
-<script src="{{ asset('js/cdl-slug.js') }}"></script>
+<script src="{{ asset('js/slug-generator.js') }}"></script>
 @endsection

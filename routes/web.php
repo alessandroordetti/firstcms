@@ -58,5 +58,21 @@ Route::middleware(['jwt.cookie'])->group(function () {
     Route::get('/cdl/{id}/edit', 'CmsMultiversityCdlController@edit')->name('cdl-edit');
     Route::post('/cdl/{id}', 'CmsMultiversityCdlController@update')->name('cdl-update');
     Route::post('/cdl/{id}/delete', 'CmsMultiversityCdlController@delete')->name('cdl-delete');
+
+    /* CRUD PER LA GESTIONE DEGLI EVENTI */
+    Route::get('/event', 'CmsMultiversityEventController@index')->name('event-index');
+    Route::get('/event/create', 'CmsMultiversityEventController@create')->name('event-create');
+    Route::post('/event/store', 'CmsMultiversityEventController@store')->name('event-store');
+    Route::get('/event/{id}/edit', 'CmsMultiversityEventController@edit')->name('event-edit');
+    Route::post('/event/{id}', 'CmsMultiversityEventController@update')->name('event-update');
+    Route::post('/event/{id}/delete', 'CmsMultiversityEventController@delete')->name('event-delete');
+
+    /* CRUD PER LA GESTIONE DELLE SEDI */
+    Route::get('/sede', 'CmsMultiversitySedeController@index')->name('sede-index');
+    Route::get('/sede/create', 'CmsMultiversitySedeController@create')->name('sede-create');
+    Route::post('/sede/store', 'CmsMultiversitySedeController@store')->name('sede-store');
+    Route::get('/sede/{id}/edit', 'CmsMultiversitySedeController@edit')->name('sede-edit');
+    Route::post('/sede/{id}', 'CmsMultiversitySedeController@update')->name('sede-update');
+    Route::post('/sede/{id}/delete', 'CmsMultiversitySedeController@delete')->name('sede-delete');
 });
 
