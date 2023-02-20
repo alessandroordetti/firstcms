@@ -68,7 +68,7 @@ class CmsMultiversityCdlController extends Controller
         $newCdl->seo_title = $data['seo_title'];
         $newCdl->seo_description = $data['seo_description'];
         $newCdl->stato = $data['stato'];
-        $newCdl->deleted_at = 0;
+        $newCdl->deleted = 0;
 
         if(CmsMultiversityCdl::where('ateneo', '=', $data['ateneo'])->where('slug', '=', $data['slug'])->exists()){
             return redirect()->route('cdl-create')->with('queryError', 'Il corso è già presente nel DB. Riprovare');
@@ -132,11 +132,6 @@ class CmsMultiversityCdlController extends Controller
         $cdl->seo_title = $data['seo_title'];
         $cdl->seo_description = $data['seo_description'];
         $cdl->stato = $data['stato'];
-
-        /* CONTROLLARE PERCHE' NON FUNZIONA */
-        if(CmsMultiversityCdl::where('ateneo', '=', $data['ateneo'])->where('slug', '=', $data['slug'])->exists()){
-            return redirect()->route('cdl-edit', ['id' => $cdl->id])->with('queryError', 'Il corso è già presente nel DB. Riprovare');
-        } 
 
         $cdl->save();
 

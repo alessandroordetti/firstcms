@@ -103,10 +103,6 @@ class CmsMultiversityEventController extends Controller
         $event->seo_description= $data['seo_description'];
         $event->stato= $data['stato'];
 
-        if(CmsMultiversityEvent::where('ateneo', '=', $data['ateneo'])->where('slug', '=', $data['slug'])->exists()){
-            return redirect()->route('event-edit', ['id' => $event->id])->with('queryError', 'L\'evento è già presente nel DB. Riprovare');
-        } 
-
         $event->save();
 
         return redirect()->route('event-edit', ['id' => $event->id])->with('response', 'Evento modificato correttamente');

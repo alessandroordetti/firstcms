@@ -38,7 +38,7 @@
                     
                     <div class="w-100 d-flex justify-content-between align-items-center rounded">
                         <input type="text" name="titolo" class="form-control" id="title" required>
-                        <span class="form-control h-100 w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
+                        <span class="form-control w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
                     </div>
                 </div>
 
@@ -49,17 +49,26 @@
 
                 <div class="mb-3 d-flex">
                     <label for="regione" class="mb-4 fw-bold me-2 w-25 text-center">Regione</label>
-                    <input type="text" name="regione" class="form-control" id="regione" required>
+                    <select name="regione" id="regione" class="form-control">
+                        <option selected disabled> Seleziona un regione </option>
+                        <?php foreach ($regioni as $regione) { ?>
+                            <option value="{{$regione->nome}}">{{$regione->nome}}</option>
+                        <?php } ?>
+                    </select>
                 </div>
                 
                 <div class="mb-3 d-flex">
                     <label for="provincia" class="mb-4 fw-bold me-2 w-25 text-center">Provincia</label>
-                    <input type="text" name="provincia" class="form-control" id="provincia" required>
+                    <select name="provincia" id="provincia" class="form-control" disabled>
+
+                    </select>
                 </div>
 
                 <div class="mb-3 d-flex">
-                    <label for="citta" class="mb-4 fw-bold me-2 w-25 text-center">Città</label>
-                    <input type="text" name="citta" class="form-control" id="citta" required>
+                    <label for="citta" class="mb-4 fw-bold me-2 w-25 text-center">Comune</label>
+                    <select name="comune" id="comune" class="form-control" disabled>
+
+                    </select>
                 </div>
 
                 <div class="mb-3 d-flex">
@@ -128,4 +137,5 @@
 
 <!-- SLUG GENERATOR SCRIPTO -->
 <script src="{{ asset('js/slug-generator.js') }}"></script>
+<script src="{{ asset('js/location-helper.js')}}"></script>
 @endsection

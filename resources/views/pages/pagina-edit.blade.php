@@ -4,22 +4,22 @@
 
 <section class="p-5">
     <div class="col-12 d-flex justify-content-between align-items-center">
-        <h1 class="p-2">Pagine</h1>
+        <h1 class="mb-3">Modifica pagina</h1>
 
         <a href="{{route('pagina-index')}}" class="btn btn-primary h-50">Torna indietro</a>
     </div>
 
   <div class="container-fluid bg-white rounded border border-3 border-top py-4">
     <div class="row">
-
         <div class="col-10 mx-auto">
-            @if(session('response'))
-                <h2 class="text-success">{{session('response')}}</h2>
-            @elseif(session('success'))
-                <h2 class="text-success">{{session('success')}}</h2>
-            @endif
-            <form action="{{route('pagina-update', $page->id)}}" method="POST">
-
+            <form action="{{route('pagina-updatefix', $page->id)}}" method="POST">
+                
+                @if(session('response'))
+                    <h2 class="text-success text-center mb-3">{{session('response')}}</h2>
+                @elseif(session('success'))
+                    <h2 class="text-success text-center mb-3">{{session('success')}}</h2>
+                @endif
+                
                 @csrf 
 
                 <div class="mb-3 d-flex align-items-center">
@@ -31,9 +31,19 @@
                     </select>
                 </div>
 
+
                 <div class="mb-3 d-flex">
                     <label for="ateneo" class="mb-4 fw-bold me-2 w-25 text-center">Titolo</label>
-                    <input type="text" name="titolo" class="form-control" id="title" value="{{$page->titolo}}" required>
+                    
+                    <div class="w-100 d-flex justify-content-between align-items-center rounded">
+                        <input type="text" name="titolo" class="form-control" id="title" value="{{$page->titolo}}" required>
+                        <span class="form-control w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
+                    </div>
+                </div>
+
+                <div class="mb-3 d-flex" id="slug-div">
+                    <label for="slug" class="mb-4 fw-bold me-2 w-25 text-center">Slug</label>
+                    <input type="text" name="slug" class="form-control h-100" id="slug" value="{{$page->slug}}" required readonly placeholder="Per generare lo slug, inserisci nel campo titolo un valore valido dopodiché premi su Genera">            
                 </div>
 
                 <div class="mb-3 d-flex">
@@ -44,16 +54,6 @@
                         <option value="2" {{ ($page->categoria == 2) ? 'selected' : '' }}>Two</option>
                         <option value="3" {{ ($page->categoria == 3) ? 'selected' : '' }}>Three</option>
                     </select>
-                </div>
-
-
-                <div class="mb-3 d-flex" id="slug-div">
-                    <label for="slug" class="mb-4 fw-bold me-2 w-25 text-center">Slug</label>
-
-                    <div class="w-100 d-flex justify-content-between align-items-center rounded">
-                        <input type="text" name="slug" class="form-control h-100" id="slug" required readonly>
-                        <span class="form-control h-100 w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
-                    </div>
                 </div>
 
                 <div class="mb-3 d-flex">
@@ -76,7 +76,8 @@
                     <div class="text-start">
                         <span class="mx-2" value="1">Off</span>
                         <label class="switch">
-                            <input type="checkbox" name="stato" value="0" checked>
+                            <input type="hidden" name="stato" value="0">
+                            <input type="checkbox" name="stato" value="1" checked>
                             <span class="slider round"></span>
                         </label>
                         <span class="mx-2" value="0">On</span>

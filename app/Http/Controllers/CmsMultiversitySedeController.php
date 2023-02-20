@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\CmsMultiversitySede;
+use App\Models\CmsRegione;
+use App\Models\CmsProvincia;
+use App\Models\CmsComune;
 
 class CmsMultiversitySedeController extends Controller
 {
@@ -16,7 +19,10 @@ class CmsMultiversitySedeController extends Controller
 
     public function create()
     {
-        return view('pages.sede-create');
+        $regioni = CmsRegione::all();
+        $province = CmsProvincia::all();
+        $comuni = CmsComune::all(); 
+        return view('pages.sede-create', ['regioni' => $regioni, 'province' => $province, 'comuni' => $comuni]);
     }
 
     public function store(Request $request)
@@ -29,14 +35,14 @@ class CmsMultiversitySedeController extends Controller
             'slug' => 'required|string',
             'regione' => 'required|string',
             'provincia' => 'required|string',
-            'citta' => 'required|string',
+            'comune' => 'required|string',
             'indirizzo' => 'required|string',
             'referenti' => 'required|string',
-            'telefono' => 'required|numeric',
+            'telefono' => 'required|string',
             'email' => 'required|string',
-            'stato' => 'required|numeric',
             'lat' => 'required',
             'lng' => 'required',
+            'stato' => 'required|numeric',
             'deleted' => 'nullable|numeric'
         ]);
 
@@ -52,7 +58,7 @@ class CmsMultiversitySedeController extends Controller
         $sede->slug = $data['slug'];
         $sede->regione = $data['regione'];
         $sede->provincia = $data['provincia'];
-        $sede->citta = $data['citta'];
+        $sede->citta = $data['comune'];
         $sede->indirizzo = $data['indirizzo'];
         $sede->referenti = $data['referenti'];
         $sede->telefono = $data['telefono'];
@@ -73,12 +79,20 @@ class CmsMultiversitySedeController extends Controller
 
     public function edit(CmsMultiversitySede $sede, $id)
     {
+
         $sede = CmsMultiversitySede::find($id);
-        return view('pages.sede-edit', ['sede' => $sede]);
+        $regioni = CmsRegione::all();
+        $province = CmsProvincia::all();
+        $comuni = CmsComune::all(); 
+        $selectedRegione = CmsRegione::where('nome', '=', $sede->regione)->first();
+        $selectedProvincia = CmsProvincia::where('nome', '=', $sede->provincia)->first();
+        $selectedComune = CmsComune::where('nome', '=', $sede->citta)->first(); 
+        return view('pages.sede-edit', ['sede' => $sede,'selectedRegione' => $selectedRegione, 'selectedProvincia' => $selectedProvincia, 'selectedComune' => $selectedComune,'regioni' => $regioni, 'province' => $province, 'comuni' => $comuni]);
     }
 
     public function update(Request $request, $id)
     {
+
         $sede = CmsMultiversitySede::find($id);
         $data = $request->all();
     
@@ -118,10 +132,9 @@ class CmsMultiversitySedeController extends Controller
         $sede->lat = $data['lat'];
         $sede->lng = $data['lng'];
 
-        /* CONTROLLARE PERCHE' NON FUNZIONA */
-        if(CmsMultiversitySede::where('ateneo', '=', $data['ateneo'])->where('slug', '=', $data['slug'])->exists()){
+/*         if(CmsMultiversitySede::where('ateneo', '=', $data['ateneo'])->where('slug', '=', $data['slug'])->exists()){
             return redirect()->route('sede-edit', ['id' => $sede->id])->with('queryError', 'La sede è già presente nel DB. Riprovare');
-        } 
+        }  */
 
         $sede->save();
 

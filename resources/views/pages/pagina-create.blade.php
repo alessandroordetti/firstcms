@@ -4,7 +4,7 @@
 
 <section class="p-5">
     <div class="col-12">
-        <h1 class="p-2">Crea una nuova pagina</h1>
+        <h1>Crea una nuova pagina</h1>
     </div>
 
   <div class="container-fluid bg-white rounded border border-3 border-top py-4">
@@ -13,11 +13,11 @@
             <form action="{{route('pagina-store')}}" method="POST" id="form">
                 
                 @if(session('errorMessage'))
-                    <h2>{{session('errorMessage')}}</h2>
+                    <h2 class="text-danger text-center mb-3">{{session('errorMessage')}}</h2>
                 @elseif(session('response'))
-                    <h2>{{session('response')}}</h2>
+                    <h2 class="text-success text-center mb-3">{{session('response')}}</h2>
                 @elseif(session('queryTitleError'))
-                    <h2>{{session('queryTitleError')}}</h2>
+                    <h2 class="text-danger text-center mb-3">{{session('queryTitleError')}}</h2>
                 @endif
                 
                 @csrf 
@@ -36,13 +36,13 @@
                     
                     <div class="w-100 d-flex justify-content-between align-items-center rounded">
                         <input type="text" name="titolo" class="form-control" id="title" required>
-                        <span class="form-control h-100 w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
+                        <span class="form-control w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
                     </div>
                 </div>
 
                 <div class="mb-3 d-flex" id="slug-div">
                     <label for="slug" class="mb-4 fw-bold me-2 w-25 text-center">Slug</label>                   
-                    <input type="text" name="slug" class="form-control h-100" id="slug" required readonly>            
+                    <input type="text" name="slug" class="form-control h-100" id="slug" required readonly placeholder="Per generare lo slug, inserisci nel campo titolo un valore valido dopodiché premi su Genera">            
                 </div>
 
                 <div class="mb-3 d-flex">
@@ -71,7 +71,8 @@
                     <div class="text-start">
                         <span class="mx-2" value="1">Off</span>
                         <label class="switch">
-                            <input type="checkbox" name="stato" value="0" checked>
+                            <input type="hidden" name="stato" value="0">
+                            <input type="checkbox" name="stato" value="1" checked>
                             <span class="slider round"></span>
                         </label>
                         <span class="mx-2" value="0">On</span>
@@ -94,7 +95,7 @@
 </section>
 
 <style>
-    #slug-div:hover{
+    #genera-url:hover{
         cursor: pointer;
     }
 </style>

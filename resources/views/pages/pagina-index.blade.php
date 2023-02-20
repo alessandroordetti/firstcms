@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                     <?php forEach($pages as $page) { ?>
-                        @if($page->deleted_at !== 1)
+                        @if($page->deleted !== 1)
                         <tr class="border">
                             <th scope="row">{{$page->id}}</th>
                             <th class="text-primary">{{$page->titolo}}</th>
@@ -44,7 +44,7 @@
                                 <form action="{{ route('pagina-delete', $page->id)}}" method="post">
                                     @csrf
                                     @method('POST')
-                                    <a href="#" onclick="if (confirm('Sei sicuro di voler cancellare lapagina?')) this.closest('form').submit()">Elimina</a>
+                                    <a href="#" onclick="if (confirm('Sei sicuro di voler cancellare la pagina?')) this.closest('form').submit()">Elimina</a>
                                 </form>
                             </td>
                         </tr>

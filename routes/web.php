@@ -40,7 +40,7 @@ Route::middleware(['jwt.cookie'])->group(function () {
     Route::post('/user/store', 'CmsMultiversityUserController@store')->name('user-store');
     Route::get('/user/{id}', 'CmsMultiversityUserController@show')->name('user-show');
     Route::get('/user/{id}/edit', 'CmsMultiversityUserController@edit')->name('user-edit');
-    Route::post('user/{id}', 'CmsMultiversityUserController@update')->name('user-update');
+    Route::post('/user/{id}', 'CmsMultiversityUserController@update')->name('user-update');
     Route::post('user/{id}/delete', 'CmsMultiversityUserController@delete')->name('user-delete');
 
     /* CRUD PER LA GESTIONE DELLE NUOVE PAGINE */
@@ -48,8 +48,8 @@ Route::middleware(['jwt.cookie'])->group(function () {
     Route::get('/pagina/create', 'CmsMultiversityPageController@create')->name('pagina-create');
     Route::post('/pagina/store', 'CmsMultiversityPageController@store')->name('pagina-store');
     Route::get('/pagina/{id}/edit', 'CmsMultiversityPageController@edit')->name('pagina-edit');
-    Route::post('pagina/{id}', 'CmsMultiversityPageController@update')->name('pagina-update');
-    Route::post('pagina/{id}/delete', 'CmsMultiversityPageController@delete')->name('pagina-delete');
+    Route::post('/pagina-asd/{id}', 'CmsMultiversityPageController@update')->name('pagina-updatefix'); //non funziona
+    Route::post('/pagina/{id}/delete', 'CmsMultiversityPageController@delete')->name('pagina-delete');
 
     /* CRUF PER LA GESTIONE DELLE PAGINE */
     Route::get('/cdl', 'CmsMultiversityCdlController@index')->name('cdl-index');
@@ -74,5 +74,13 @@ Route::middleware(['jwt.cookie'])->group(function () {
     Route::get('/sede/{id}/edit', 'CmsMultiversitySedeController@edit')->name('sede-edit');
     Route::post('/sede/{id}', 'CmsMultiversitySedeController@update')->name('sede-update');
     Route::post('/sede/{id}/delete', 'CmsMultiversitySedeController@delete')->name('sede-delete');
+
+    /* CRUD PER LA GESTIONE DEI BLOG */
+    Route::get('/blog', 'CmsMultiversityBlogController@index')->name('blog-index');
+    Route::get('/blog/create', 'CmsMultiversityBlogController@create')->name('blog-create');
+    Route::post('/blog/store', 'CmsMultiversityBlogController@store')->name('blog-store');
+    Route::get('/blog/{id}/edit', 'CmsMultiversityBlogController@edit')->name('blog-edit');
+    Route::post('/blog/{id}', 'CmsMultiversityBlogController@update')->name('blog-update');
+    Route::post('/blog/{id}/delete', 'CmsMultiversityBlogController@delete')->name('blog-delete');
 });
 

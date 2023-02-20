@@ -29,7 +29,7 @@
                                 <td class="text-primary fw-bold text-capitalize">{{$event->titolo}}</td>
                                 <td>{{$event->data}}</td>
                                 <td>{{$event->luogo}}</td>
-                                <td><?php echo $event->stato == 0 ? '<i class="fa-solid fa-check text-success"></i> Online' : ' <i class="fa-solid fa-x text-danger me-1"></i> Offline'; ?></td>
+                                <td><?php echo $event->stato == 1 ? '<i class="fa-solid fa-check text-success"></i> Online' : ' <i class="fa-solid fa-x text-danger me-1"></i> Offline'; ?></td>
                                 <td>{{$event->updated_at}}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('event-edit', $event->id) }}" class="me-1">Modifica</a>

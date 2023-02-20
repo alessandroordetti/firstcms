@@ -40,7 +40,7 @@
                     
                     <div class="w-100 d-flex justify-content-between align-items-center rounded">
                         <input type="text" name="titolo" class="form-control" id="title" value="{{$sede->titolo}}" required>
-                        <span class="form-control h-100 w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
+                        <span class="form-control w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
                     </div>
                 </div>
 
@@ -51,17 +51,29 @@
 
                 <div class="mb-3 d-flex">
                     <label for="regione" class="mb-4 fw-bold me-2 w-25 text-center">Regione</label>
-                    <input type="text" name="regione" class="form-control" value="{{$sede->regione}}" id="regione" required>
+                    <select name="regione" id="regione" class="form-control">
+                        <?php foreach ($regioni as $regione) { ?>
+                            <option value="{{$regione->nome}}" <?php if ($regione->nome == $selectedRegione->nome) { ?>selected<?php } ?>>{{$regione->nome}}</option>
+                        <?php } ?>
+                    </select>
                 </div>
-                
+
                 <div class="mb-3 d-flex">
                     <label for="provincia" class="mb-4 fw-bold me-2 w-25 text-center">Provincia</label>
-                    <input type="text" name="provincia" class="form-control" value="{{$sede->provincia}}" id="provincia" required>
+                    <select name="provincia" id="provincia" class="form-control">
+                        <?php foreach ($province as $provincia) { ?>
+                            <option value="{{$provincia->nome}}" <?php if ($provincia->nome == $selectedProvincia->nome) { ?>selected<?php } ?>>{{$provincia->nome}}</option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="mb-3 d-flex">
                     <label for="citta" class="mb-4 fw-bold me-2 w-25 text-center">Città</label>
-                    <input type="text" name="citta" class="form-control" value="{{$sede->citta}}" id="citta" required>
+                    <select name="citta" id="citta" class="form-control">
+                        <?php foreach ($comuni as $comune) { ?>
+                            <option value="{{$comune->nome}}" <?php if ($comune->nome == $selectedComune->nome) { ?>selected<?php } ?>>{{$comune->nome}}</option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="mb-3 d-flex">
@@ -130,4 +142,6 @@
 
 <!-- SLUG GENERATOR SCRIPTO -->
 <script src="{{ asset('js/slug-generator.js') }}"></script>
+<script src="{{ asset('js/location-helper.js')}}"></script>
+
 @endsection

@@ -27,7 +27,7 @@
                 <div class="mb-3 d-flex align-items-center">
                     <label for="ateneo" class="mb-4 fw-bold me-2 w-25 h-100 text-center">Ateneo</label>
                     <select class="form-select mb-3" aria-label="Default select example" name="ateneo">
-                        <option selected disabled>- Seleziona un Ateneo -</option>
+                        <option readonly disabled>- Seleziona un Ateneo -</option>
                         <option value="unipegaso">Unipegaso</option>
                         <option value="mercatorum">Mercatorum</option>
                     </select>

@@ -18,7 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users', 'Api\UserController@index');
-Route::post('/cookie', 'Api\UserController@setCookie');
-
-/* Route::post('/users', 'Api\Auth\LoginController@login'); */
+Route::post('/province', 'Api\LocationController@getLocations');
+Route::post('/comuni', 'Api\LocationController@getComuni');

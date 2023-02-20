@@ -39,7 +39,7 @@
                     
                     <div class="w-100 d-flex justify-content-between align-items-center rounded">
                         <input type="text" name="titolo" class="form-control" id="title" value="{{$cdl->titolo}}" required>
-                        <span class="form-control h-100 w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
+                        <span class="form-control w-25" id="genera-url"><i class="fa-solid fa-arrows-rotate"></i> Genera</span>
                     </div>
                 </div>
 
@@ -62,9 +62,9 @@
                     <label for="tipologia" class="mb-4 fw-bold me-2 w-25 h-100 text-center">Tipologia</label>
                     <select class="form-select mb-3" aria-label="Default select example" name="tipologia">
                         <option selected disabled>- Seleziona una tipologia -</option>
-                        <option value="1" {{ ($cdl->tipologia == 1) ? 'selected' : '' }}>Triennale</option>
-                        <option value="2" {{ ($cdl->tipologia == 2) ? 'selected' : '' }}>Magistrale-Biennale</option>
-                        <option value="3" {{ ($cdl->tipologia == 3) ? 'selected' : '' }}>Magistrale-Ciclo-Unico</option>
+                        <option value="1" {{ ($cdl->tipologia == 'triennale') ? 'selected' : '' }}>Triennale</option>
+                        <option value="2" {{ ($cdl->tipologia == 'magistrale-biennale') ? 'selected' : '' }}>Magistrale-Biennale</option>
+                        <option value="3" {{ ($cdl->tipologia == 3) ? 'magistrale-ciclo-unico' : '' }}>Magistrale-Ciclo-Unico</option>
                     </select>
                 </div>
 
@@ -72,9 +72,9 @@
                     <label for="durata" class="mb-4 fw-bold me-2 w-25 h-100 text-center">Durata</label>
                     <select class="form-select mb-3" aria-label="Default select example" name="durata">
                         <option selected disabled>- Seleziona una durata -</option>
-                        <option value="1" {{ ($cdl->tipologia == 1) ? 'selected' : '' }}>2 Anni</option>
-                        <option value="2" {{ ($cdl->tipologia == 2) ? 'selected' : '' }}>3 Anni</option>
-                        <option value="3" {{ ($cdl->tipologia == 3) ? 'selected' : '' }}>5 Anni</option>
+                        <option value="1" {{ ($cdl->durata == 1) ? 'selected' : '' }}>2 Anni</option>
+                        <option value="2" {{ ($cdl->durata == 2) ? 'selected' : '' }}>3 Anni</option>
+                        <option value="3" {{ ($cdl->durata == 3) ? 'selected' : '' }}>5 Anni</option>
                     </select>
                 </div>
                 <div class="mb-3 d-flex">
