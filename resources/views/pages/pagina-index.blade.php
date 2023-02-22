@@ -22,7 +22,6 @@
                     <tr class="border">
                     <th scope="col">#</th>
                     <th scope="col">Titolo</th>
-                    <th scope="col">Template</th>
                     <th scope="col">Ateneo</th>
                     <th scope="col">Stato</th>
                     <th scope="col">Ultima modifica</th>
@@ -35,7 +34,6 @@
                         <tr class="border">
                             <th scope="row">{{$page->id}}</th>
                             <th class="text-primary">{{$page->titolo}}</th>
-                            <td>{{$page->template}}</td>
                             <td class="text-capitalize">{{$page->ateneo}}</td>
                             <td><?php echo $page->stato == 0 ? '<i class="fa-solid fa-check text-success"></i> Online' : ' <i class="fa-solid fa-x text-danger me-1"></i> Offline'; ?></td>
                             <td class="right-to-left">{{$page->updated_at}}</td>

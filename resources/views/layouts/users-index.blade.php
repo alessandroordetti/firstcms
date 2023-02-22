@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{asset('/css/sidebar.css')}}">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/css/pagine.css')}}">
-    <title>Users-Index</title>
+    <title>Cms Multiversity</title>
 </head>
 <body class="vh-100">
     @include('components.header')
@@ -39,11 +39,11 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 px-0" id="navbar-component-bg">
+            <div class="col-2" id="navbar-component-bg">
                 @include('components.sidebar')
             </div>
             
-            <div class="col-10 p-3" id="bg-light-blue">
+            <div class="col-10 p-3 " id="bg-light-blue">
                 <!-- Main Content Section -->
                 @yield('content')
             </div>
@@ -51,9 +51,13 @@
         </div>
     </div>
 
+
     @include('components.footer')
 
     <!-- POPPERJS FOR BOOTSTRAP 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
 </body>
 </html>

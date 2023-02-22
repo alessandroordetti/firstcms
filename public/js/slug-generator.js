@@ -3,7 +3,7 @@ document.getElementById("genera-url").addEventListener("click", function(event){
     event.preventDefault();
     console.log(originalValue);
 
-    if(/[^A-Za-z0-9_ ]+/g.test(originalValue)){
+    if(/[^A-Za-z0-9\u00C0-\u017F\s_ ]+/g.test(originalValue)){
         alert('Non sono ammessi caratteri speciali. Per favore, riprova');
     } else {
         const newValue = originalValue.trim().toLowerCase();

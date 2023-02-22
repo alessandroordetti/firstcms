@@ -25,3 +25,8 @@ label{
 .right-to-left{
     direction: rtl;
 }
+
+#card-object-vf{
+    width: 110px;
+    height: 110px;
+}

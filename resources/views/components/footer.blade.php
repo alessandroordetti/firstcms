@@ -1,5 +1,5 @@
 <footer>
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row">
             <div class="col-2 py-5" id="left-black">
 

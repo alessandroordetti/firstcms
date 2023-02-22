@@ -140,7 +140,7 @@ class CmsMultiversityCdlController extends Controller
 
     public function delete(CmsMultiversityCdl $cdl, $id)
     {
-        $deltedCdl =  CmsMultiversityCdl::find($id);
+        $deltedCdl = CmsMultiversityCdl::find($id);
         $deltedCdl->deleted_at = 1;
         $deltedCdl->save();
 

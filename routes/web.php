@@ -82,5 +82,16 @@ Route::middleware(['jwt.cookie'])->group(function () {
     Route::get('/blog/{id}/edit', 'CmsMultiversityBlogController@edit')->name('blog-edit');
     Route::post('/blog/{id}', 'CmsMultiversityBlogController@update')->name('blog-update');
     Route::post('/blog/{id}/delete', 'CmsMultiversityBlogController@delete')->name('blog-delete');
+
+    /* CRUD PER LA GESTIONE DELLE CATEGORIE */
+    Route::get('/categoria', 'CmsMultiversityCategoryController@index')->name('categoria-index');
+    Route::get('/categoria/create', 'CmsMultiversityCategoryController@create')->name('categoria-create');
+    Route::post('/categoria/store', 'CmsMultiversityCategoryController@store')->name('categoria-store');
+    Route::get('/categoria/{id}/edit', 'CmsMultiversityCategoryController@edit')->name('categoria-edit');
+    Route::post('/categoria/{id}', 'CmsMultiversityCategoryController@update')->name('categoria-update');
+    Route::post('/categoria/{id}/delete', 'CmsMultiversityCategoryController@delete')->name('categoria-delete');
+
+    /* PER L'UPLOAD DEI FILE */
+    Route::post('/file-management/upload', 'CmsMultiversityFileManagementController@upload')->name('file-management-upload');
 });
 
