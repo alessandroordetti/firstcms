@@ -62,8 +62,8 @@
                     <label for="tipologia" class="mb-4 fw-bold me-2 w-25 h-100 text-center">Tipologia</label>
                     <select class="form-select mb-3" aria-label="Default select example" name="tipologia">
                         <option selected disabled>- Seleziona una tipologia -</option>
-                        <option value="1" {{ ($cdl->tipologia == 'triennale') ? 'selected' : '' }}>Triennale</option>
-                        <option value="2" {{ ($cdl->tipologia == 'magistrale-biennale') ? 'selected' : '' }}>Magistrale-Biennale</option>
+                        <option value="1" {{ ($cdl->tipologia == 1) ? 'selected' : '' }}>Triennale</option>
+                        <option value="2" {{ ($cdl->tipologia == 2) ? 'selected' : '' }}>Magistrale-Biennale</option>
                         <option value="3" {{ ($cdl->tipologia == 3) ? 'magistrale-ciclo-unico' : '' }}>Magistrale-Ciclo-Unico</option>
                     </select>
                 </div>

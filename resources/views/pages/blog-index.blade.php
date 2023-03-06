@@ -30,17 +30,17 @@
                         <?php forEach($blogs as $blog) { ?>
                         @if($blog->deleted !== 1)
                             <tr>
-                            <th scope="row">{{$blog->id}}</th>
-                            <td>{{$blog->titolo}}</td>
-                            <td>{{$blog->slug}}</td>
-                            <td><?php echo $blog->stato == 1 ? '<i class="fa-solid fa-check text-success"></i> Online' : ' <i class="fa-solid fa-x text-danger me-1"></i> Offline' ?></td>
-                            <td class="d-flex">
-                                <a href="{{ route('blog-edit', $blog->id) }}" class="me-1">Modifica</a>
-                                <form action="{{ route('blog-delete', $blog->id)}}" method="post">
-                                    @csrf
-                                    <a href="#" onclick="if (confirm('Sei sicuro di voler cancellare il blog?')) this.closest('form').submit()">Elimina</a>
-                                </form>
-                            </td>
+                                <th scope="row">{{$blog->id}}</th>
+                                <td>{{$blog->titolo}}</td>
+                                <td>{{$blog->slug}}</td>
+                                <td><?php echo $blog->stato == 1 ? '<i class="fa-solid fa-check text-success"></i> Online' : ' <i class="fa-solid fa-x text-danger me-1"></i> Offline' ?></td>
+                                <td class="d-flex">
+                                    <a href="{{ route('blog-edit', $blog->id) }}" class="me-1">Modifica</a>
+                                    <form action="{{ route('blog-delete', $blog->id)}}" method="post">
+                                        @csrf
+                                        <a href="#" onclick="if (confirm('Sei sicuro di voler cancellare il blog?')) this.closest('form').submit()">Elimina</a>
+                                    </form>
+                                </td>
                             </tr>
                         @endif
                         <?php } ?>

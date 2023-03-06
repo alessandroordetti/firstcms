@@ -60,7 +60,7 @@
                 <div class="mb-3 d-flex">
                     <label for="provincia" class="mb-4 fw-bold me-2 w-25 text-center">Provincia</label>
                     <select name="provincia" id="provincia" class="form-control" disabled>
-
+                         
                     </select>
                 </div>
 

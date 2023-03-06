@@ -71,7 +71,7 @@ class CmsMultiversityCategoryController extends Controller
         $category->slug = $data['slug'];
         $category->save();
 
-        return redirect()->route('categoria-edit', ['id' => $category->id])->with('success', 'Categoria registrata correttamente');
+        return redirect()->route('categoria-edit', ['id' => $category->id])->with('success', 'Categoria modificata correttamente');
     }
 
     public function delete(CmsMultiversityCategory $category, $id)
