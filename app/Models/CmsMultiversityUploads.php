@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
  
 class CmsMultiversityUploads extends Model
 {
-    protected $table = 'cms_multiversity_uploads';
+    protected $fillable = ['filename', 'file_data'];
 }

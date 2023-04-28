@@ -33,6 +33,8 @@ class CmsMultiversityFileManagementController extends Controller
         // Generate a unique file name for the uploaded file
         $filename = $file->getClientOriginalName();
 
+        var_dump($filename);
+
         // Move the file to the uploads folder
         $file->move(public_path('uploads'), $filename);
 
