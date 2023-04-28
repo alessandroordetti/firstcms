@@ -13,6 +13,7 @@ class CmsMultiversityBlogController extends Controller
     public function index()
     {
         $blogs = CmsMultiversityBlogPost::all();
+
         return view('pages.blog-index', ['blogs' => $blogs]);
     }
 

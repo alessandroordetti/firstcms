@@ -5,6 +5,7 @@ const provincia = document.getElementById('provincia')
 const comune = document.getElementById('comune')
 
 regione.addEventListener('change', function (el) {
+    console.log(el);
     const valueRegione = el.target.value
     provincia.removeAttribute('disabled');
     provincia.innerHTML = '';

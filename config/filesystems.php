@@ -65,6 +65,11 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
+        'temporary-files' => [
+            'driver' => 'local',
+            'root' => sys_get_temp_dir(),
+        ],
+
     ],
 
     /*
@@ -80,6 +85,11 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+    ],
+
+    'temporary-files' => [
+        'driver' => 'local',
+        'root' => sys_get_temp_dir(),
     ],
 
 ];

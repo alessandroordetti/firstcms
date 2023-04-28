@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12">
             <div class="d-flex">
-                <a href="{{ route('blog-create')}}"><button class="btn border mb-4"><i class="fa-solid fa-plus bg-dark text-white rounded-circle p-1"></i> Crea Blog</button></a>
+                <a href="{{ route('blog-create')}}"><button class="btn border mb-4 me-2"><i class="fa-solid fa-plus bg-dark text-white rounded-circle p-1"></i> Crea Blog</button></a>
 
                 @include('layouts.file-management-modal')
             </div>

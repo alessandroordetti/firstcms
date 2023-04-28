@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Validator, Hash};
 use Illuminate\Http\Response;
 use App\Http\Controllers\CookieController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cookie;
 use \DateTime;
 use Firebase\JWT\{Key, JWT, ExpiredException};
@@ -35,9 +36,7 @@ class LoginController extends Controller
             return view('pages.login')->with('message', 'Utente non trovato');
         }
 
-
         $password = $user->password;
-
 
         if ($user && Hash::check($request->password, $user->password)){
 

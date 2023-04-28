@@ -10,18 +10,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="file-manager-form" method="POST" enctype="multipart/form-data" action="{{ route('file-management-upload') }}">
+                <form class="mb-3" id="file-manager-form" method="POST" enctype="multipart/form-data" action="{{ route('file-management-upload') }}">
                     @csrf
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="file">Upload File</label>
                         <input type="file" class="form-control-file" id="file" name="file">
                     </div>
                     <button type="submit" class="btn btn-primary">Upload</button>
                 </form>
 
+                <a href="{{ route('file-management-get-files') }}">Fetch</a>
+
                 <form id="new-folder-form">
                     @csrf
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="folder-name">New Folder Name</label>
                         <input type="text" class="form-control" id="folder-name" name="folder-name">
                     </div>

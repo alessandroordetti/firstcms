@@ -30,3 +30,11 @@ label{
     width: 110px;
     height: 110px;
 }
+
+.table > :not(caption) > * {
+    border-bottom-width: 0px;
+}
+
+.border-3{
+    --bs-border-width: 1px;
+}

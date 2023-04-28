@@ -27,6 +27,7 @@ Route::get('/logout', 'LogoutController@logout')->name('logout');
 Route::get('/cookie/set','CookieController@setCookie');
 Route::get('/cookie/get','CookieController@getCookie'); 
 
+
 /* PER LA GESTIONE DELLE PAGINE INTERNE AL CMS */
 Route::middleware(['jwt.cookie'])->group(function () {
     
@@ -93,5 +94,6 @@ Route::middleware(['jwt.cookie'])->group(function () {
 
     /* PER L'UPLOAD DEI FILE */
     Route::post('/file-management/upload', 'CmsMultiversityFileManagementController@upload')->name('file-management-upload');
+    Route::get('/file-management/get-files', 'CmsMultiversityFileManagementController@getData')->name('file-management-get-files');
 });
 
